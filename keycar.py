@@ -1,17 +1,50 @@
-import curses
+import tkinter as tk
+import RPi.GPIO as GPIO
+from time import sleep
+import sys
+from ultraModule import getDistance
+from TurnModule import *
+from go_any import *
 
-def main(stdscr):
-    # do not wait for input when calling getch
-    stdscr.nodelay(1)
-    while True:
-        # get keyboard input, returns -1 if none available
-        c = stdscr.getch()
-        if c != -1:
-            # print numeric value
-            stdscr.addstr(str(c) + ' ')
-            stdscr.refresh()
-            # return curser to start position
-            stdscr.move(0, 0)
+# =======================================================================
+#  set GPIO warnings as false
+# =======================================================================
+GPIO.setwarnings(False)
 
-if __name__ == '__main__':
-    curses.wrapper(main)
+# =======================================================================
+# set up GPIO mode as BOARD
+# =======================================================================
+GPIO.setmode(GPIO.BOARD)
+
+GPIO.setwarnings(False)
+pwm_setup()
+
+def onKeyPress(event):
+	key = event.char
+    text.insert('end', 'You pressed %s\n' % (key))
+	if key == 'w':
+		go_forward(20,0.1)
+	if key == 'a':
+		leftSwingTurn(20,0.1)
+	if key == 's':
+		go_backward(20,0.1)
+	if key == 'd':
+		rightSwingTurn(20,0.1)
+	if key == 'q':
+		leftPointTurn(20,0.1)
+	if key == 'e':
+		rightPointTurn(20,0.1)
+
+
+
+if __name__ == "__main__":
+	try:
+		root = tk.Tk()
+		root.geometry('300x200')
+		text = tk.Text(root, background='black', foreground='white', font=('Comic Sans MS', 12))
+		text.pack()
+		root.bind('<KeyPress>', onKeyPress)
+		root.mainloop()
+	except KeyboardInterrupt:
+		GPIO.cleanup()
+		pwm_low()

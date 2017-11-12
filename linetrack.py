@@ -65,7 +65,7 @@ SwingTr = 0.5
 if __name__ == "__main__":
 	while True:
 		try:
-			if distance = getDistance() < mindis:
+			if getDistance() < mindis:
 				avoider()
 			else:
 				mover(trackingModule(), 20)
