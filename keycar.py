@@ -21,7 +21,7 @@ pwm_setup()
 
 def onKeyPress(event):
     key = event.char
-    text.insert('end', 'You pressed %s\n' % (key))
+    text.insert('end', 'You pressed %s\n' %key)
     if key == 'w':
         go_forward(20,0.1)
     if key == 'a':
@@ -34,7 +34,6 @@ def onKeyPress(event):
         leftPointTurn(20,0.1)
     if key == 'e':
         rightPointTurn(20,0.1)
-
 
 
 if __name__ == "__main__":
