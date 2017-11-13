@@ -41,14 +41,12 @@ def trackingModule():
 
 def mover(reli, speed):
     speed = speed
-    if reli[0] == 0:  # [0,0,0,0,1], [0,0,0,1,1], [0,0,1,1,1], [0,1,1,1,1]
-        alpha = reli.count(1) * 2
-        leftSwingTurn(speed-10 + alpha, 0.5)
-    if reli[0] == 1 and reli[-1] == 1:
-        go_forward(speed, 0.5)
-    if reli[0] == 1:
-        alpha = reli.count(0) * 2  # [1,0,0,0,0], [1,1,0,0,0], [1,1,1,0,0], [1,1,1,1,0]
-        rightSwingTurn(speed-10 + alpha, 0.5)
+    if reli == [0,0,1,1,1] or reli == [1,0,0,1,1] or reli[0] == 0
+        leftSwingTurn(speed, 0.1)
+    if reli[0] == 1 and reli[-1] == 1
+        go_forward(speed, 0.1)
+    if reli[0] == 1 or reli == [1,1,0,0,1] or reli == [1,1,1,0,0]:
+        rightSwingTurn(speed, 0.1)
     else:
         go_forward(speed, 0.5)
 
