@@ -54,9 +54,9 @@ def mover(reli, speed):
 
 
 def avoider():
-    leftSwingTurn(20, 2)
+    leftPointTurn(20, 2)
     go_forward(20, 2)
-    rightSwingTurn(20, 2)
+    rightPointTurn(20, 2)
 
 
 GPIO.setwarnings(False)
