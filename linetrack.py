@@ -19,8 +19,8 @@ GPIO.setmode(GPIO.BOARD)
 leftmostled = 16
 leftlessled = 18
 centerled = 22
-rightlessled = 40
-rightmostled = 32
+rightlessled = 32  #
+rightmostled = 40  #
 
 GPIO.setup(leftmostled, GPIO.IN)
 GPIO.setup(leftlessled, GPIO.IN)
