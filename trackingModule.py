@@ -78,8 +78,8 @@ rightmostled=32
 GPIO.setup(leftmostled, GPIO.IN)
 GPIO.setup(leftlessled, GPIO.IN)
 GPIO.setup(centerled,   GPIO.IN)
-GPIO.setup(rightlessled, GPIO.IN)
 GPIO.setup(rightmostled, GPIO.IN)
+GPIO.setup(rightlessled, GPIO.IN)
 
 
 
