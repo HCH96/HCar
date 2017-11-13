@@ -44,7 +44,13 @@ def mover(reli, speed):
     if reli == [1,0,0,0,1]:
         go_forward(speed, 0.3)
     if reli == [1,1,0,0,1]:
-        leftSwingturn
+        leftSwingTurn(15, 0.3)
+	if reli == [1,0,0,1,1]:
+		rightSwingTurn(15, 0.3)
+	if reli[0] == 0:
+		leftSwingTurn(speed, 0.3)
+	if reli[-1] == 0:
+		rightSwingTurn(speed, 0.3)
     else:
         go_forward(speed, 0.3)
 
@@ -70,7 +76,8 @@ if __name__ == "__main__":
             if getDistance() < mindis:
                 avoider()
             else:
-                mover(trackingModule(), 20)
+				val = input("Please input speed : ")
+                mover(trackingModule(), val)
         except KeyboardInterrupt:
             GPIO.cleanup()
             pwm_low()
