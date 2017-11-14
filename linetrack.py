@@ -39,7 +39,7 @@ def trackingModule():
     return reli
 
 
-def mover(reli, speed):
+def mover(reli, speed, alpha):
     speed = speed
     if reli[0] == 1 and reli[1] == 1:
         go_forward(speed, 0.00001)
