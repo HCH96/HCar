@@ -39,23 +39,23 @@ def trackingModule():
     return reli
 
 
-def mover(reli, s, ts, alpha):
+def mover(reli, speed):
     if reli == [1,0,0,0,1]:
-        go_forward(s, 0.00001)
+        go_forward(speed, 0.00001)
     if reli[0:1] == [0,0]:
-	leftSwingTurn(ts, 0.00001)
+	leftSwingTurn(speed, 0.00001)
     if reli == [0,1,1,1,1]:
-        leftSwingTurn(ts + alpha, 0.00001)
-	while reli == [1,1,1,1,1]:
-	    leftSwingTurn(ts + alpha + 5, 0.3)
-    if reli[3:4] == [0,0]:
-	rightSwingTurn(ts, 0.00001)
-    if reli == [1,1,1,1,0]:
-        rightSwingTurn(ts + alpha, 0.00001)
-	while reli == [1,1,1,1,1]:
-	    rightSwingTurn(ts + alpha + 5, 0.3)
+        leftSwingTurn(speed + 10, 0.00001)
     if reli == [1,1,1,1,1]:
-	go_forward(s, 0,00001)
+	leftSwingTurn(speed + 12, 0.00001)
+    if reli[3:4] == [0,0]:
+	rightSwingTurn(speed, 0.00001)
+    if reli == [1,1,1,1,0]:
+        rightSwingTurn(speed + 10, 0.00001)
+    if reli == [1,1,1,1,1]:
+	rightSwingTurn(speed +12, 0.3)
+    if reli == [1,1,1,1,1]:
+	go_forward(speed, 0,00001)
 
 
 def avoider(avs):
@@ -75,15 +75,12 @@ SwingTr = 0.5
 
 if __name__ == "__main__":
     s = input("Please input speed : ")
-    ts = input("Please input ts : ")
-    alpha = input("Please input alpha : ")
-    avs = input("Please input avs : ")
     while True:
         try:
-            if getDistance() < mindis:
-                avoider(avs)
-            else:
-                mover(trackingModule(), s, ts, alpha)
+#             if getDistance() < mindis:
+#                 avoider(avs)
+#             else:
+        mover(trackingModule(), s)
         except KeyboardInterrupt:
             GPIO.cleanup()
             pwm_low()
