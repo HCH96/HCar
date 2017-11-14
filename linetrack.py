@@ -76,12 +76,12 @@ SwingTr = 0.5
 
 if __name__ == "__main__":
     speed = input("Please input speed : ")
-    while True:
-        try:
+    try:
+        while True:
         #     if getDistance() < mindis:
         #         avoider(avs)
         #     else:
             mover(trackingModule(), speed)
-        except KeyboardInterrupt:
+    except KeyboardInterrupt:
             GPIO.cleanup()
             pwm_low()
