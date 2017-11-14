@@ -47,7 +47,7 @@ def mover(reli, s, ts, alpha):
     while reli == [0,1,1,1,1]:
         leftSwingTurn(ts + alpha, 0.00001)
 	while reli == [1,1,1,1,1]:
-	    leftSwingTurn(sts + alpha + 5, 0.3)
+	    leftSwingTurn(ts + alpha + 5, 0.3)
     while reli[3:4] == [0,0]:
 	rightSwingTurn(ts, 0.00001)
     while reli == [1,1,1,1,0]:
