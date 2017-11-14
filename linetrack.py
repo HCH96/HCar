@@ -40,17 +40,17 @@ def trackingModule():
 
 
 def mover(reli, s, ts, alpha):
-    while reli == [1,0,0,0,1]:
+    if reli == [1,0,0,0,1]:
         go_forward(s, 0.00001)
-    while reli[0:1] == [0,0]:
+    if reli[0:1] == [0,0]:
 	leftSwingTurn(ts, 0.00001)
-    while reli == [0,1,1,1,1]:
+    if reli == [0,1,1,1,1]:
         leftSwingTurn(ts + alpha, 0.00001)
 	while reli == [1,1,1,1,1]:
 	    leftSwingTurn(ts + alpha + 5, 0.3)
-    while reli[3:4] == [0,0]:
+    if reli[3:4] == [0,0]:
 	rightSwingTurn(ts, 0.00001)
-    while reli == [1,1,1,1,0]:
+    if reli == [1,1,1,1,0]:
         rightSwingTurn(ts + alpha, 0.00001)
 	while reli == [1,1,1,1,1]:
 	    rightSwingTurn(ts + alpha + 5, 0.3)
