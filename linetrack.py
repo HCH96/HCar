@@ -44,12 +44,12 @@ def mover(reli, speed):
     alpha = 0
     if reli == [0,1,1,1,1] or reli == [0,0,1,1,1] or reli == [0,0,0,1,1]:
         alpha = reli.count(1)
-        leftSwingTurn(speed + alpha * 2, 0.5)
+        leftSwingTurn(speed + alpha * 2, 0.7)
         if reli == [1,1,1,1,1]:
             leftSwingTurn(speed + 10, 0.7)
     elif reli == [1,1,1,1,0] or reli == [1,1,1,0,0] or reli == [1,1,0,0,0]:
         alpha = reli.count(1)
-        rightSwingTurn(speed + alpha * 2, 0.5)
+        rightSwingTurn(speed + alpha * 2, 0.7)
         if reli == [1,1,1,1,1]:
             leftSwingTurn(speed + 10, 0.7)
     elif reli == [1,0,0,0,1] or reli == [1,1,0,0,1] or reli == [1,0,0,1,1]:
@@ -78,9 +78,9 @@ if __name__ == "__main__":
     speed = input("Please input speed : ")
     try:
         while True:
-        #     if getDistance() < mindis:
-        #         avoider(avs)
-        #     else:
+            if getDistance() < mindis:
+                avoider(30)
+            else:
             mover(trackingModule(), speed)
     except KeyboardInterrupt:
             GPIO.cleanup()
