@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-from time import sleep
+import time
 import sys
 from ultraModule import getDistance
 from TurnModule import *
@@ -40,22 +40,21 @@ def trackingModule():
 
 
 def mover(reli, speed):
-    if reli == [1,0,0,0,1]:
-        go_forward(speed, 0.00001)
-    if reli[0:1] == [0,0]:
-	leftSwingTurn(speed, 0.00001)
-    if reli == [0,1,1,1,1]:
-        leftSwingTurn(speed + 10, 0.00001)
-    if reli == [1,1,1,1,1]:
-	leftSwingTurn(speed + 12, 0.00001)
-    if reli[3:4] == [0,0]:
-	rightSwingTurn(speed, 0.00001)
-    if reli == [1,1,1,1,0]:
-        rightSwingTurn(speed + 10, 0.00001)
-    if reli == [1,1,1,1,1]:
-	rightSwingTurn(speed +12, 0.3)
-    if reli == [1,1,1,1,1]:
-	go_forward(speed, 0,00001)
+    if reli == [0,1,1,1,1] or reli == [0,0,1,1,1] or reli == [0,0,0,1,1]:
+        alpha = reli.count(1)
+        leftSwingTurn(speed + alpha * 2, 0.01)
+        while reli == [1,1,1,1,1]:
+            leftSwingTurn(speed + 10, 0.5)
+    if reli == [1,1,1,1,0] or reli == [1,1,1,0,0] or reli == [1,1,0,0,0]:
+        alpha = reli.count(1)
+        rightSwingTurn(speed + alpha * 2, 0.01)
+        while reli == [1,1,1,1,1]:
+            leftSwingTurn(speed + 10, 0.5)
+    if reli == [1,0,0,0,1] or reli == [1,1,0,0,1] or reli == [1,0,0,1,1]:
+        go_forward(speed, 0.01)
+    else:
+        go_forward(speed, 0.01)
+
 
 
 def avoider(avs):
