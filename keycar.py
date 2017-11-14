@@ -5,6 +5,7 @@ import sys
 from ultraModule import getDistance
 from TurnModule import *
 from go_any import *
+import os
 
 # =======================================================================
 #  set GPIO warnings as false
@@ -39,6 +40,7 @@ def onKeyPress(event):
     if key == 'l':
         GPIO.cleanup()
         pwm_low()
+        os.system("exit")
 
 
 if __name__ == "__main__":
