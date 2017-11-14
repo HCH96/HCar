@@ -23,17 +23,17 @@ def onKeyPress(event):
     key = event.char
     text.insert('end', 'You pressed %s\n' %key)
     if key == 'w':
-        go_forward(20,0.1)
+        go_forward(35,0.1)
     if key == 'a':
-        leftSwingTurn(20,0.1)
+        leftSwingTurn(35,0.1)
     if key == 's':
-        go_backward(20,0.1)
+        go_backward(35,0.1)
     if key == 'd':
-        rightSwingTurn(20,0.1)
+        rightSwingTurn(35,0.1)
     if key == 'q':
-        leftPointTurn(20,0.1)
+        leftPointTurn(35,0.1)
     if key == 'e':
-        rightPointTurn(20,0.1)
+        rightPointTurn(35,0.1)
 
 
 if __name__ == "__main__":
