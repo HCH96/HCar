@@ -40,6 +40,7 @@ def trackingModule():
 
 
 def mover(reli, speed):
+    speed = speed
     alpha = 0
     if reli == [0,1,1,1,1] or reli == [0,0,1,1,1] or reli == [0,0,0,1,1]:
         alpha = reli.count(1)
@@ -77,9 +78,9 @@ if __name__ == "__main__":
     speed = input("Please input speed : ")
     while True:
         try:
-#             if getDistance() < mindis:
-#                 avoider(avs)
-#             else:
+        #     if getDistance() < mindis:
+        #         avoider(avs)
+        #     else:
             mover(trackingModule(), speed)
         except KeyboardInterrupt:
             GPIO.cleanup()
