@@ -44,7 +44,7 @@ def mover(reli, speed):
     if reli[0] == 1 and reli[1] == 1:
         go_forward(speed, 0.00001)
     if reli[0] == 0:
-		leftSwingTurn(speed, 0.00001)
+	leftSwingTurn(speed, 0.00001)
     if reli[0] == 0 and reli[1] == 0:
         leftSwingTurn(speed + alpha, 0.00001)
     if reli[-1] == 0:
