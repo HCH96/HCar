@@ -53,17 +53,23 @@ def mover(reli, speed):
     else:
         go_forward(1, 0.1)
 
-        
+
 def avoider(avs):
-    leftSwingTurn(avs, 2)
-    go_forward(avs, 2)
-    rightSwingTurn(avs, 2)
+    start = time.time()
+    dis = 0
+    while (start - time.time()) < 1:
+        time.sleep(0.1)
+        dis = dis + getDistance()
+        go_forward(1, 0.000001)
+    if dis//10 < mindis:
+        leftSwingTurn(avs, 2)
+        go_forward(avs, 2)
 
 
 GPIO.setwarnings(False)
 pwm_setup()
 
-mindis = 20
+mindis = 25
 obstacle = 1
 
 SwingPr = 90
