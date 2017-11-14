@@ -81,7 +81,7 @@ if __name__ == "__main__":
             if getDistance() < mindis:
                 avoider(30)
             else:
-            mover(trackingModule(), speed)
+                mover(trackingModule(), speed)
     except KeyboardInterrupt:
             GPIO.cleanup()
             pwm_low()
