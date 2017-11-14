@@ -64,7 +64,7 @@ def avoider(avs):
 GPIO.setwarnings(False)
 pwm_setup()
 
-mindis = 30
+mindis = 20
 obstacle = 1
 
 SwingPr = 90
