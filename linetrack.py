@@ -55,10 +55,10 @@ def mover(reli, speed):
         go_forward(speed, 0.00001)
 
 
-def avoider():
-    leftPointTurn(20, 2)
-    go_forward(20, 2)
-    rightPointTurn(20, 2)
+def avoider(avs):
+    leftSwingTurn(avs, 2)
+    go_forward(avs, 2)
+    rightSwingTurn(avs, 2)
 
 
 GPIO.setwarnings(False)
@@ -73,10 +73,11 @@ SwingTr = 0.5
 if __name__ == "__main__":
     speed = input("Please input speed : ")
     alpha = input("Please input alpha : ")
+    avs = input("Please input avs : ")
     while True:
         try:
             if getDistance() < mindis:
-                avoider()
+                avoider(avs)
             else:
                 mover(trackingModule(), speed, alpha)
         except KeyboardInterrupt:
