@@ -49,7 +49,7 @@ def mover(reli, speed, alpha):
         leftSwingTurn(speed + alpha, 0.00001)
     if reli == [1,1,0,0,0] or reli == [1,1,1,0,0]:
 	rightSwingTurn(speed, 0.00001)
-    if reli = [1,1,1,1,0]:
+    if reli == [1,1,1,1,0]:
         rightSwingTurn(speed + alpha, 0.00001)
     else:
         go_forward(speed, 0.00001)
