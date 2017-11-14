@@ -23,17 +23,22 @@ def onKeyPress(event):
     key = event.char
     text.insert('end', 'You pressed %s\n' %key)
     if key == 'w':
-        go_forward(35,0.1)
+        go_forward(50,0.1)
     if key == 'a':
-        leftSwingTurn(35,0.1)
+        leftSwingTurn(50,0.1)
     if key == 's':
-        go_backward(35,0.1)
+        go_backward(50,0.1)
     if key == 'd':
-        rightSwingTurn(35,0.1)
+        rightSwingTurn(50,0.1)
     if key == 'q':
-        leftPointTurn(35,0.1)
+        leftPointTurn(50,0.1)
     if key == 'e':
-        rightPointTurn(35,0.1)
+        rightPointTurn(50,0.1)
+    if key == 'b':
+        go_forward(100,0,1)
+    if key == 'l':
+        GPIO.cleanup()
+        pwm_low()
 
 
 if __name__ == "__main__":
