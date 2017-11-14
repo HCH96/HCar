@@ -43,14 +43,14 @@ def mover(reli, speed):
     if reli == [0,1,1,1,1] or reli == [0,0,1,1,1] or reli == [0,0,0,1,1]:
         alpha = reli.count(1)
         leftSwingTurn(speed + alpha * 2, 0.01)
-        while reli == [1,1,1,1,1]:
+        if reli == [1,1,1,1,1]:
             leftSwingTurn(speed + 10, 0.5)
-    if reli == [1,1,1,1,0] or reli == [1,1,1,0,0] or reli == [1,1,0,0,0]:
+    elif reli == [1,1,1,1,0] or reli == [1,1,1,0,0] or reli == [1,1,0,0,0]:
         alpha = reli.count(1)
         rightSwingTurn(speed + alpha * 2, 0.01)
-        while reli == [1,1,1,1,1]:
+        if reli == [1,1,1,1,1]:
             leftSwingTurn(speed + 10, 0.5)
-    if reli == [1,0,0,0,1] or reli == [1,1,0,0,1] or reli == [1,0,0,1,1]:
+    elif reli == [1,0,0,0,1] or reli == [1,1,0,0,1] or reli == [1,0,0,1,1]:
         go_forward(speed, 0.01)
     else:
         go_forward(speed, 0.01)
