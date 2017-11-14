@@ -40,7 +40,7 @@ def trackingModule():
 
 
 def mover(reli, s, ts, alpha):
-    while reli[0] == 1 and reli[-1] == 1:
+    while reli == [1,0,0,0,1]:
         go_forward(s, 0.00001)
     while reli[0:1] == [0,0]:
 	leftSwingTurn(ts, 0.00001)
@@ -55,7 +55,7 @@ def mover(reli, s, ts, alpha):
 	while reli == [1,1,1,1,1]:
 	    rightSwingTurn(ts + alpha + 5, 0.3)
     if reli == [1,1,1,1,1]:
-	go_forward(30, 0,00001)
+	go_forward(s, 0,00001)
 
 
 def avoider(avs):
