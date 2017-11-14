@@ -40,22 +40,22 @@ def trackingModule():
 def mover(reli, speed):
 	speed = speed
 	if reli == [0,0,1,1,1] or reli == [0,0,0,1,1]:
-		leftSwingTurn(speed, 0.05)
+		leftSwingTurn(speed, 0.07)
 	elif reli == [0,0,0,0,1]:
-		leftSwingTurn(speed-10, 0.05)
+		leftSwingTurn(speed-10, 0.07)
 	elif reli == [0,1,1,1,1]:
-		leftSwingTurn(speed+10, 0.05)
+		leftSwingTurn(speed+10, 0.07)
 	elif reli == [1,0,0,0,1] or reli == [1,1,0,1,1]:
 		go_forward(speed, 0.3)
 	elif reli == [1,1,0,0,0] or reli == [1,1,1,0,0]:
-		rightSwingTurn(speed, 0.05)
+		rightSwingTurn(speed, 0.07)
 	elif reli == [1,0,0,0,0]:
-		rightSwingTurn(speed-10, 0.05)
+		rightSwingTurn(speed-10, 0.07)
 	elif reli == [1,1,1,1,0]:
-		rightSwingTurn(speed+10, 0.05)
+		rightSwingTurn(speed+10, 0.07)
         elif reli == [1,1,1,1,1]:
-			leftSwingTurn(speed-10, 0.05)
-			go_forward(speed-10, 0.05)
+		leftSwingTurn(speed-10, 0.07)
+		go_forward(speed-10, 0.07)
 	else:
 		go_forward(speed, 0.3)
 
@@ -71,18 +71,18 @@ SwingTr = 0.5
 if __name__ == "__main__":
 	try:
 		while True:
-			distance = getDistance()
-			if (distance > dis):
-				mover(trackingModule(), 30)
-			else:
-				rightSwingTurn(50, 1)
-				print("a")
-				go_forward(20, 2)
-				print("b")
-				leftSwingTurn(60, 1)
-				print("c")
-				go_forward_any(30, 1)
-				print("d")
+		    distance = getDistance()
+		    if (distance > dis):
+		    mover(trackingModule(), 30)
+		    else:
+			rightSwingTurn(50, 1)
+			print("a")
+			go_forward(20, 2)
+			print("b")
+			leftSwingTurn(60, 1)
+			print("c")
+			go_forward_any(30, 1)
+			print("d")
 	except KeyboardInterrupt:
 		GPIO.cleanup()
 		pwm_low()
