@@ -52,7 +52,7 @@ def mover(reli, speed):
         rightSwingTurn(speed + alpha * 2, 0.01, reli)
         while reli == [1,1,1,1,1]:
             leftSwingTurn(speed + 15, 0.01)
-    elif reli == [1,0,0,0,1] or reli == [1,1,0,0,1] or reli == [1,0,0,1,1]:
+    elif reli[0] == 1 and reli[4] == 1:
         go_forward(speed, 0.01)
     else:
         go_forward(speed, 0.01)
