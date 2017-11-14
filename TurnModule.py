@@ -29,12 +29,12 @@ def REVERSE(x):
 # =======================================================================
 
 # =======================================================================
-# Set the motor's true / false value to go forward.  
+# Set the motor's true / false value to go forward.
 forward0 = True
 forward1 = False
 # =======================================================================
 
-# ======================================================================= 
+# =======================================================================
 # Set the motor's true / false value to go opposite.
 backward0 = REVERSE(forward0)
 backward1 = REVERSE(forward1)
@@ -60,13 +60,13 @@ MotorRight_PWM = 37
 
 
 # ===========================================================================
-# Control the DC motor to make it rotate clockwise, so the car will 
+# Control the DC motor to make it rotate clockwise, so the car will
 # move forward.
 # if you have different direction, you need to change HIGH to LOW
-# or LOW to HIGH,in MotorLeft_A  
+# or LOW to HIGH,in MotorLeft_A
 # and LOW to HIGH or HIGH to LOW in MotorLeft_B
 # if you have different direction, you need to change HIGH to LOW
-# or LOW to HIGH in MotorLeft_A 
+# or LOW to HIGH in MotorLeft_A
 # and LOW to HIGH or HIGH to LOW in MotorLeft_B
 # ===========================================================================
 
@@ -92,7 +92,7 @@ def rightmotor(x):
 
 
 # =======================================================================
-# because the connetions between motors (left motor) and Rapberry Pi has been 
+# because the connetions between motors (left motor) and Rapberry Pi has been
 # established, the GPIO pins of Rapberry Pi
 # such as MotorLeft_A, MotorLeft_B, and MotorLeft_PWM
 # should be clearly declared whether their roles of pins
@@ -104,7 +104,7 @@ GPIO.setup(MotorLeft_B, GPIO.OUT)
 GPIO.setup(MotorLeft_PWM, GPIO.OUT)
 
 # =======================================================================
-# because the connetions between motors (right motor) and Rapberry Pi has been 
+# because the connetions between motors (right motor) and Rapberry Pi has been
 # established, the GPIO pins of Rapberry Pi
 # such as MotorLeft_A, MotorLeft_B, and MotorLeft_PWM
 # should be clearly declared whether their roles of pins
@@ -127,9 +127,10 @@ RightPwm = GPIO.PWM(MotorRight_PWM, 100)
 
 
 # =======================================================================
-# perform right swing turn of 90 degree  
+# perform right swing turn of 90 degree
 # =======================================================================
-def rightSwingTurn(speed, running_time):
+def rightSwingTurn(speed, running_time, reli):
+    alpha = reli.count(1)
     # set the left motor to go fowrard
     leftmotor(forward0)
     #leftmotor(forward1)
@@ -143,15 +144,16 @@ def rightSwingTurn(speed, running_time):
     # set the speed of the left motor to go fowrard
     LeftPwm.ChangeDutyCycle(speed)
     # set the speed of the right motor to stop
-    RightPwm.ChangeDutyCycle(0)
+    RightPwm.ChangeDutyCycle(speed - alpha * 5)
     # set the running time of the left motor to go fowrard
     time.sleep(running_time)
 
 
 # =======================================================================
-# perform left swing turn of 90 degree  
-# ======================================================================= 
-def leftSwingTurn(speed, running_time):
+# perform left swing turn of 90 degree
+# =======================================================================
+def leftSwingTurn(speed, running_time, reli):
+    alpha = reli.count(1)
     # set the left motor pwm to be ready to stop
     # Turn Off Left PWM
     GPIO.output(MotorLeft_PWM, GPIO.LOW)
@@ -159,11 +161,11 @@ def leftSwingTurn(speed, running_time):
     # set the right motor to go fowrard
     rightmotor(forward0)
     #rightmotor(forward1)
-    # set the right motor pwm to be ready to go forward   
+    # set the right motor pwm to be ready to go forward
     GPIO.output(MotorRight_PWM, GPIO.HIGH)
 
     # set the speed of the left motor to stop
-    LeftPwm.ChangeDutyCycle(0)
+    LeftPwm.ChangeDutyCycle(speed - alpha * 5)
     # set the speed of the right motor to go fowrard
     RightPwm.ChangeDutyCycle(speed)
     # set the running time of the right motor to go fowrard
