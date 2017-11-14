@@ -54,8 +54,8 @@ def mover(reli, s, ts, alpha):
         rightSwingTurn(ts + alpha, 0.00001)
 	while reli == [1,1,1,1,1]:
 	    rightSwingTurn(ts + alpha + 5, 0.3)
-    while reli == [1,1,1,1,1]:
-	go_forward(0, 0,00001)
+    if reli == [1,1,1,1,1]:
+	go_forward(30, 0,00001)
 
 
 def avoider(avs):
