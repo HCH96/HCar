@@ -144,7 +144,7 @@ def rightSwingTurn(speed, running_time, reli):
     # set the speed of the left motor to go fowrard
     LeftPwm.ChangeDutyCycle(speed)
     # set the speed of the right motor to stop
-    RightPwm.ChangeDutyCycle(speed - alpha * 5)
+    RightPwm.ChangeDutyCycle(0)
     # set the running time of the left motor to go fowrard
     time.sleep(running_time)
 
@@ -165,7 +165,7 @@ def leftSwingTurn(speed, running_time, reli):
     GPIO.output(MotorRight_PWM, GPIO.HIGH)
 
     # set the speed of the left motor to stop
-    LeftPwm.ChangeDutyCycle(speed - alpha * 5)
+    LeftPwm.ChangeDutyCycle(0)
     # set the speed of the right motor to go fowrard
     RightPwm.ChangeDutyCycle(speed)
     # set the running time of the right motor to go fowrard
