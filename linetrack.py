@@ -40,6 +40,7 @@ def trackingModule():
 
 
 def mover(reli, speed):
+    alpha = 0
     if reli == [0,1,1,1,1] or reli == [0,0,1,1,1] or reli == [0,0,0,1,1]:
         alpha = reli.count(1)
         leftSwingTurn(speed + alpha * 2, 0.5)
@@ -73,13 +74,13 @@ SwingPr = 90
 SwingTr = 0.5
 
 if __name__ == "__main__":
-    s = input("Please input speed : ")
+    speed = input("Please input speed : ")
     while True:
         try:
 #             if getDistance() < mindis:
 #                 avoider(avs)
 #             else:
-            mover(trackingModule(), s)
+            mover(trackingModule(), speed)
         except KeyboardInterrupt:
             GPIO.cleanup()
             pwm_low()
