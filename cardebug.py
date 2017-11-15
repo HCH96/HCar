@@ -42,15 +42,14 @@ def trackingModule():
 def mover(reli, speed, deli):
     speed = speed
     deli.append("reli : " + str(reli) + " >> ")
-    metalist = [ [[1,1,1,1,0],[1,1,1,0,0],[1,1,0,0,0]]  ,  [[1,0,0,0,1],[1,1,0,0,1],[1,0,0,1,1]]  ,  [[0,1,1,1,1],[0,0,1,1,1],[0,0,0,1,1]] ]
-    if reli in metalist[0]:
+    if reli[0] == 0
         alpha = (reli.count(1) - 2) * 4
         rightSwingTurn(speed + alpha, 0.2)
         deli.append("rightSwingTurn" + "\n")
-    elif reli in metalist[1]:
+    elif reli[0] == 1 and reli[4] == 1:
         go_forward(speed, 0.2)
         deli.append("go_forward" + "\n")
-    elif reli in metalist[2]:
+    elif reli[4] == 1:
         alpha = (reli.count(1) - 2) * 4
         leftSwingTurn(speed + alpha, 0.2)
         deli.append("leftSwingTurn" + "\n")
