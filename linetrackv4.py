@@ -39,20 +39,26 @@ def trackingModule():
     return reli
 
 
-def mover(reli, speed):
+def mover(speed):
     speed = speed
-    metalist = [ [[1,1,1,1,0],[1,1,1,0,0],[1,1,0,0,0]]  ,  [[1,0,0,0,1],[1,1,0,0,1],[1,0,0,1,1]]  ,  [[0,1,1,1,1],[0,0,1,1,1],[0,0,0,1,1]] ]
-    if reli in metalist[0]:
-        alpha = (reli.count(1) - 2) * 4
-        rightSwingTurn(speed + alpha, 0.2)
-    elif reli in metalist[1]:
-        go_forward(speed, 0,2)
-    elif reli in metalist[2]:
-        alpha = (reli.count(1) - 2) * 4
-        leftSwingTurn(speed + alpha, 0.2)
+    reli1 = trackingModule()
+    loc1 = reli1.index(0)
+    time.sleep(0.1)
+    reli2 = trackingModule()
+    loc2 = reli2.index(0)
+    time.sleep(0.1)
+    reli3 = trackingModule()
+    loc3 = reli3.index(0)
+    result = loc1 + loc2 + loc3
+    alpha = reli2.count(0)
+    if result <= 3:
+        leftSwingTurn(speed, 0.2)
+    elif 9 <= result:
+        rightSwingTurn(speed, 0.2)
+    elif 3 < result and result < 9:
+        go_forward(speed, 0.2)
     else:
-        go_forward(1, 0.1)
-
+        pass
 
 def avoider(avs):
     start = time.time()
@@ -83,7 +89,7 @@ if __name__ == "__main__":
             if getDistance() < mindis:
                 avoider(30)
             else:
-                mover(trackingModule(), speed)
+                mover(speed)
     except KeyboardInterrupt:
             GPIO.cleanup()
             pwm_low()

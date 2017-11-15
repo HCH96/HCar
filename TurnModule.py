@@ -129,7 +129,7 @@ RightPwm = GPIO.PWM(MotorRight_PWM, 100)
 # =======================================================================
 # perform right swing turn of 90 degree
 # =======================================================================
-def rightSwingTurn(speed, running_time):
+def rightSwingTurn(left, right, running_time):
     # set the left motor to go fowrard
     leftmotor(forward0)
     #leftmotor(forward1)
