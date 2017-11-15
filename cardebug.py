@@ -55,8 +55,8 @@ def mover(reli, speed, deli):
         leftSwingTurn(speed + alpha, 0.2)
         deli.append("leftSwingTurn" + "\n")
     else:
-        go_forward(1, 0.1)
-        deli.append("else go_forward" + "\n")
+        pass
+        deli.append("else pass" + "\n")
 
 
 def avoider(avs):
@@ -80,10 +80,10 @@ if __name__ == "__main__":
     speed = input("Please input speed : ")
     try:
         while True:
-            time.sleep(0.1)
-            if getDistance() < mindis:
-                avoider(30)
-            else:
+#             time.sleep(0.1)
+#             if getDistance() < mindis:
+#                 avoider(30)
+#             else:
                 mover(trackingModule(), speed, deli)
     except KeyboardInterrupt:
             fH.writelines(deli)
