@@ -39,7 +39,7 @@ def trackingModule():
     return reli
 
 
-def mover(reli, speed):
+def mover(reli, speed, meth):
     speed = speed
     metalist = [ [[1,1,1,1,0],[1,1,1,0,0],[1,1,0,0,0]]  ,  [[1,0,0,0,1],[1,1,0,0,1],[1,0,0,1,1]]  ,  [[0,1,1,1,1],[0,0,1,1,1],[0,0,0,1,1]] ]
     if reli in metalist[0]:
@@ -50,6 +50,13 @@ def mover(reli, speed):
     elif reli in metalist[2]:
         alpha = (reli.count(1) - 2) * 4
         leftSwingTurn(speed + alpha, 0.2)
+    if reli == [1,1,1,1,1]:
+        if meth == "1":
+            while not (0 in reli):
+                leftSwingTurn(speed, 0.2)
+        if meth == "2":
+            while not (0 in reli):
+                rightSwingTurn(speed, 0.2) 
     else:
         go_forward(1, 0.1)
 
@@ -76,13 +83,14 @@ SwingPr = 90
 SwingTr = 0.5
 
 if __name__ == "__main__":
+    meth = input("INPUT METH : ")
     speed = input("Please input speed : ")
     try:
         while True:
             if getDistance() < mindis:
                 avoider(30)
             else:
-                mover(trackingModule(), speed)
+                mover(trackingModule(), speed, METH)
     except KeyboardInterrupt:
             GPIO.cleanup()
             pwm_low()
