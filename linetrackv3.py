@@ -56,9 +56,9 @@ def mover(reli, speed, meth):
                 leftSwingTurn(speed, 0.2)
         if meth == "2":
             while not (0 in reli):
-                rightSwingTurn(speed, 0.2) 
+                rightSwingTurn(speed, 0.2)
     else:
-        time.sleep(0.2)
+        continue
 
 
 def avoider(avs):
