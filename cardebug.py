@@ -39,24 +39,23 @@ def trackingModule():
     return reli
 
 
-def mover(reli, speed):
+def mover(reli, speed, deli):
     speed = speed
     deli.append("reli : " + str(reli) + " >> ")
-    metalist = [ [[1,1,1,1,0],[1,1,1,0,0],[1,1,0,0,0]]  ,  [[1,0,0,0,1],[1,1,0,0,1],[1,0,0,1,1]]  ,  [[0,1,1,1,1],[0,0,1,1,1],[0,0,0,1,1]] ]
-    if reli in metalist[0]:
+    if reli[0] == 0:
         alpha = (reli.count(1) - 2) * 4
         rightSwingTurn(speed + alpha, 0.2)
         deli.append("rightSwingTurn" + "\n")
-    elif reli in metalist[1]:
-        go_forward(speed, 0,2)
+    elif reli[0] == 1 and reli[4] == 1:
+        go_forward(speed, 0.2)
         deli.append("go_forward" + "\n")
-    elif reli in metalist[2]:
+    elif reli[4] == 1:
         alpha = (reli.count(1) - 2) * 4
         leftSwingTurn(speed + alpha, 0.2)
         deli.append("leftSwingTurn" + "\n")
     else:
-        go_forward(1, 0.1)
-        deli.append("else go_forward" + "\n")
+        pass
+        deli.append("else pass" + "\n")
 
 
 def avoider(avs):
@@ -80,13 +79,13 @@ if __name__ == "__main__":
     speed = input("Please input speed : ")
     try:
         while True:
-            time.sleep(0.1)
-            if getDistance() < mindis:
-                avoider(30)
-            else:
-                mover(trackingModule(), speed)
+#             time.sleep(0.1)
+#             if getDistance() < mindis:
+#                 avoider(30)
+#             else:
+                mover(trackingModule(), speed, deli)
     except KeyboardInterrupt:
-            GPIO.cleanup()
-            pwm_low()
             fH.writelines(deli)
             fH.close()
+            GPIO.cleanup()
+            pwm_low()
