@@ -49,7 +49,6 @@ def mover(reli, speed, meth):
     elif reli[0] == 0 or reli == [1,1,1,0,1]:
         alpha = (reli.count(1) - 2) * 4
         leftSwingTurn(speed + alpha, 0.2)
-        if reli == [1,1,1,1,1]:
     else:
         pass
 
