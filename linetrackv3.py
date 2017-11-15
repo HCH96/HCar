@@ -46,7 +46,7 @@ def mover(reli, speed, meth):
         alpha = (reli.count(1) - 2) * 4
         rightSwingTurn(speed + alpha, 0.2)
     elif reli in metalist[1]:
-        go_forward(speed, 0,2)
+        go_forward(speed, 0.2)
     elif reli in metalist[2]:
         alpha = (reli.count(1) - 2) * 4
         leftSwingTurn(speed + alpha, 0.2)
