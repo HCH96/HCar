@@ -62,13 +62,13 @@ def mover(reli, speed, meth):
 
 
 def avoider(avs):
-    start = time.time()
-    dis = 0
-    while (start - time.time()) < 1:
-        time.sleep(0.1)
-        dis = dis + getDistance()
-        go_forward(1, 0.000001)
-    if dis//10 < mindis:
+#     start = time.time()
+#     dis = 0
+#     while (start - time.time()) < 1:
+#         time.sleep(0.1)
+#         dis = dis + getDistance()
+#         go_forward(1, 0.000001)
+#     if dis//10 < mindis:
         leftSwingTurn(avs, 2)
         go_forward(avs, 2)
 
