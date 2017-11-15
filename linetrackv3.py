@@ -50,7 +50,7 @@ def mover(reli, speed, meth):
     elif reli in metalist[2]:
         alpha = (reli.count(1) - 2) * 4
         leftSwingTurn(speed + alpha, 0.2)
-    if reli == [1,1,1,1,1]:
+    elif reli == [1,1,1,1,1]:
         if meth == "1":
             while not (0 in reli):
                 leftSwingTurn(speed, 0.2)
@@ -62,13 +62,13 @@ def mover(reli, speed, meth):
 
 
 def avoider(avs):
-#     start = time.time()
-#     dis = 0
-#     while (start - time.time()) < 1:
-#         time.sleep(0.1)
-#         dis = dis + getDistance()
-#         go_forward(1, 0.000001)
-#     if dis//10 < mindis:
+    start = time.time()
+    dis = 0
+    while (start - time.time()) < 1:
+        time.sleep(0.1)
+        dis = dis + getDistance()
+        go_forward(1, 0.000001)
+    if dis//10 < mindis:
         leftSwingTurn(avs, 2)
         go_forward(avs, 2)
 
