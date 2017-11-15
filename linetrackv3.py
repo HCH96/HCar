@@ -58,7 +58,7 @@ def mover(reli, speed, meth):
             while not (0 in reli):
                 rightSwingTurn(speed, 0.2)
     else:
-        continue
+        pass
 
 
 def avoider(avs):
