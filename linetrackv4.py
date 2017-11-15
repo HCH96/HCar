@@ -65,10 +65,13 @@ def aver(reli1, reli2, reli3):
 def indexer(reli):
     count = reli.count(0)
     sum_index = 0
-    for i in range(reli):
+    for i in range(len(reli)):
         if reli[i] == 0:
             sum_index = sum_index + i
-    sum_index = sum_index // count
+    if count != 0:
+        sum_index = sum_index // count
+    else:
+        sum_index = 2
     return sum_index
 
 

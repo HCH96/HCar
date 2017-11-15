@@ -1,20 +1,21 @@
-reli : [0, 0, 0, 0, 0] >> else go_forward
-reli : [0, 1, 0, 0, 0] >> else go_forward
-reli : [1, 0, 0, 0, 1] >> go_forward
-reli : [1, 0, 0, 0, 1] >> go_forward
-reli : [1, 0, 0, 0, 1] >> go_forward
-reli : [1, 0, 0, 0, 1] >> go_forward
-reli : [0, 1, 0, 0, 1] >> else go_forward
-reli : [0, 0, 1, 0, 1] >> else go_forward
-reli : [0, 1, 1, 1, 1] >> leftSwingTurn
-reli : [0, 1, 1, 1, 1] >> leftSwingTurn
-reli : [1, 1, 0, 0, 0] >> rightSwingTurn
-reli : [1, 1, 0, 0, 0] >> rightSwingTurn
-reli : [1, 1, 0, 0, 0] >> rightSwingTurn
-reli : [0, 1, 0, 1, 1] >> else go_forward
-reli : [0, 1, 0, 1, 1] >> else go_forward
-reli : [0, 1, 1, 1, 1] >> leftSwingTurn
-reli : [0, 1, 1, 0, 0] >> else go_forward
-reli : [1, 0, 0, 0, 1] >> go_forward
-reli : [0, 0, 0, 0, 0] >> else go_forward
-reli : [0, 0, 0, 0, 0] >> else go_forward
+reli : [1, 1, 0, 0, 1] >> go_forward
+reli : [1, 1, 0, 0, 1] >> go_forward
+reli : [1, 1, 0, 0, 1] >> go_forward
+reli : [1, 1, 0, 1, 1] >> go_forward
+reli : [1, 1, 0, 0, 1] >> go_forward
+reli : [1, 1, 0, 0, 1] >> go_forward
+reli : [1, 1, 1, 0, 1] >> go_forward
+reli : [1, 1, 1, 0, 1] >> go_forward
+reli : [1, 1, 0, 1, 1] >> go_forward
+reli : [1, 0, 1, 1, 1] >> go_forward
+reli : [0, 1, 1, 1, 1] >> rightSwingTurn
+reli : [1, 1, 1, 1, 1] >> go_forward
+reli : [1, 1, 1, 1, 1] >> go_forward
+reli : [1, 1, 1, 1, 1] >> go_forward
+reli : [1, 1, 1, 1, 1] >> go_forward
+reli : [0, 0, 0, 0, 0] >> rightSwingTurn
+reli : [0, 0, 0, 0, 0] >> rightSwingTurn
+reli : [0, 0, 0, 0, 0] >> rightSwingTurn
+reli : [0, 0, 0, 0, 0] >> rightSwingTurn
+reli : [0, 0, 0, 0, 0] >> rightSwingTurn
+reli : [0, 0, 0, 0, 0] >> 
