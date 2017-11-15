@@ -42,7 +42,7 @@ def trackingModule():
 def mover(reli, speed, deli):
     speed = speed
     deli.append("reli : " + str(reli) + " >> ")
-    if reli[0] == 0
+    if reli[0] == 0:
         alpha = (reli.count(1) - 2) * 4
         rightSwingTurn(speed + alpha, 0.2)
         deli.append("rightSwingTurn" + "\n")
