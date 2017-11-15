@@ -42,9 +42,9 @@ def trackingModule():
 def mover(speed):
     speed = speed
     reli1 = trackingModule()
-    time.sleep(0.1)
+    time.sleep(0.05)
     reli2 = trackingModule()
-    time.sleep(0.1)
+    time.sleep(0.05)
     reli3 = trackingModule()
     result = aver(reli1, reli2, reli3)
     if result <= 3:
@@ -102,7 +102,7 @@ if __name__ == "__main__":
     try:
         while True:
             if getDistance() < mindis:
-                avoider(30)
+                # avoider(30)
             else:
                 mover(speed)
     except KeyboardInterrupt:
