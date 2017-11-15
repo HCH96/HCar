@@ -44,25 +44,12 @@ def mover(reli, speed, meth):
     if reli[-1] == 0 or reli == [1,0,1,1,1]:
         alpha = (reli.count(1) - 2) * 4
         rightSwingTurn(speed + alpha, 0.2)
-        if reli == [1,1,1,1,1]:
-            if meth == "1":
-                while not (0 in reli):
-                    leftSwingTurn(speed, 0.2)
-            if meth == "2":
-                while not (0 in reli):
-                    rightSwingTurn(speed, 0.2)
     elif reli[0] == 1 and reli[4] == 1:
         go_forward(speed, 0.2)
     elif reli[0] == 0 or reli == [1,1,1,0,1]:
         alpha = (reli.count(1) - 2) * 4
         leftSwingTurn(speed + alpha, 0.2)
         if reli == [1,1,1,1,1]:
-            if meth == "1":
-                while not (0 in reli):
-                    leftSwingTurn(speed, 0.2)
-            if meth == "2":
-                while not (0 in reli):
-                    rightSwingTurn(speed, 0.2)
     else:
         pass
 
