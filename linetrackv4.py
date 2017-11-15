@@ -42,15 +42,11 @@ def trackingModule():
 def mover(speed):
     speed = speed
     reli1 = trackingModule()
-    loc1 = reli1.index(0)
     time.sleep(0.1)
     reli2 = trackingModule()
-    loc2 = reli2.index(0)
     time.sleep(0.1)
     reli3 = trackingModule()
-    loc3 = reli3.index(0)
-    result = loc1 + loc2 + loc3
-    alpha = reli2.count(0)
+    result = aver(reli1, reli2, reli3)
     if result <= 3:
         leftSwingTurn(speed, 0.2)
     elif 9 <= result:
@@ -59,6 +55,22 @@ def mover(speed):
         go_forward(speed, 0.2)
     else:
         pass
+
+
+def aver(reli1, reli2, reli3):
+    sumed = indexer(reli1) + indexer(reli2) + indexer(reli3)
+    return sumed
+
+
+def indexer(reli):
+    count = reli.count(0)
+    sum_index = 0
+    for i in range(reli):
+        if reli[i] == 0:
+            sum_index = sum_index + i
+    sum_index = sum_index // count
+    return sum_index
+
 
 def avoider(avs):
     start = time.time()
