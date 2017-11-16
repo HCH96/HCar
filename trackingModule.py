@@ -1,17 +1,9 @@
-#########################################################################
-### Date: 2017/10/13
-### file name: trackingModule.py
-### Purpose: this code has been generated for the five-way tracking sensor
-###         to perform the decision of direction
-###
-#########################################################################
-
 # =======================================================================
 # import GPIO library and time module
 # =======================================================================
 import RPi.GPIO as GPIO
-from time import sleep
-import os
+import time
+
 # =======================================================================
 #  set GPIO warnings as false
 # =======================================================================
@@ -21,8 +13,6 @@ GPIO.setwarnings(False)
 # set up GPIO mode as BOARD
 # =======================================================================
 GPIO.setmode(GPIO.BOARD)
-
-
 
 # =======================================================================
 # declare the pins of 16, 18, 22, 40, 32 in the Rapberry Pi
@@ -56,12 +46,11 @@ GPIO.setmode(GPIO.BOARD)
 #                   black line locates below the rightmostled of the moving object
 # =======================================================================
 
-leftmostled=16
-leftlessled=18
-centerled=22
-rightlessled=32
-rightmostled=40
-
+leftmostled = 16
+leftlessled = 18
+centerled = 22
+rightlessled = 32
+rightmostled = 40
 
 # =======================================================================
 # because the connetions between 5-way tracking sensor and Rapberry Pi has been
@@ -77,11 +66,9 @@ rightmostled=40
 
 GPIO.setup(leftmostled, GPIO.IN)
 GPIO.setup(leftlessled, GPIO.IN)
-GPIO.setup(centerled,   GPIO.IN)
-GPIO.setup(rightmostled, GPIO.IN)
+GPIO.setup(centerled, GPIO.IN)
 GPIO.setup(rightlessled, GPIO.IN)
-
-
+GPIO.setup(rightmostled, GPIO.IN)
 
 # =======================================================================
 # GPIO.input(leftmostled) method gives the data obtained from leftmostled
@@ -108,15 +95,12 @@ GPIO.setup(rightlessled, GPIO.IN)
 # =======================================================================
 
 
-try:
-    while True:
-       os.system("clear")
-       print("leftmostled  detects black line(0) or white ground(1): " + str(GPIO.input(leftmostled)))
-       print("leftlessled  detects black line(0) or white ground(1): " + str(GPIO.input(leftlessled)))
-       print("centerled    detects black line(0) or white ground(1): " + str(GPIO.input(centerled)))
-       print("rightlessled detects black line(0) or white ground(1): " + str(GPIO.input(rightlessled)))
-       print("rightmostled detects black line(0) or white ground(1): " + str(GPIO.input(rightmostled)))
-       sleep(0.2)
-
-except KeyboardInterrupt:
-    GPIO.cleanup()
+#
+def signal():
+	A = GPIO.input(leftmostled)
+	B = GPIO.input(leftlessled)
+	C = GPIO.input(centerled)
+	D = GPIO.input(rightlessled)
+	E = GPIO.input(rightmostled)
+        print(A,B,C,D,E)
+        return A,B,C,D,E

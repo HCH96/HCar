@@ -1,10 +1,3 @@
-######################################################################
-### Date: 2017/10/5
-### file name: go_any.py
-### Purpose: this code has been generated for the three-wheeled moving
-###         object to go forward or backward without time limit
-######################################################################
-
 # import GPIO library
 import RPi.GPIO as GPIO
 
@@ -77,20 +70,20 @@ def leftmotor(x):
         GPIO.output(MotorLeft_A, GPIO.LOW)
         GPIO.output(MotorLeft_B, GPIO.HIGH)
     else:
-        print
-        'Config Error'
+        print('Config Error')
+
 
 
 def rightmotor(x):
     if x == True:
-        GPIO.output(MotorRight_A, GPIO.LOW)
-        GPIO.output(MotorRight_B, GPIO.HIGH)
-    elif x == False:
         GPIO.output(MotorRight_A, GPIO.HIGH)
         GPIO.output(MotorRight_B, GPIO.LOW)
+    elif x == False:
+        GPIO.output(MotorRight_A, GPIO.LOW)
+        GPIO.output(MotorRight_B, GPIO.HIGH)
+    else:
+        print('Config Error')
 
-
-# student assignment (3)
 
 # =======================================================================
 # because the connetions between motors (left motor) and Rapberry Pi has been
@@ -116,6 +109,7 @@ GPIO.setup(MotorRight_A, GPIO.OUT)
 GPIO.setup(MotorRight_B, GPIO.OUT)
 GPIO.setup(MotorRight_PWM, GPIO.OUT)
 
+
 # =======================================================================
 # create left pwm object to control the speed of left motor
 # =======================================================================
@@ -133,22 +127,18 @@ RightPwm = GPIO.PWM(MotorRight_PWM, 100)
 # =======================================================================
 
 def go_forward_any(speed):
+
+    leftmotor(forward1)
     leftmotor(forward0)
-    #leftmotor(forward1)
-    # GPIO.output(MotorLeft_A,GPIO.HIGH)
-    # GPIO.output(MotorLeft_B,GPIO.LOW)
     GPIO.output(MotorLeft_PWM, GPIO.HIGH)
 
-    # set the right motor to go forward
     rightmotor(forward0)
-    #rightmotor(forward1)
-    # GPIO.output(MotorRight_A,GPIO.LOW)
-    # GPIO.output(MotorRight_B,GPIO.HIGH)
+    rightmotor(forward1)
     GPIO.output(MotorRight_PWM, GPIO.HIGH)
-    # set the speed of the left motor to go forward
+
     LeftPwm.ChangeDutyCycle(speed)
-    # set the speed of the right motor to go forward
     RightPwm.ChangeDutyCycle(speed)
+
 
 # student assignment (4)
 
@@ -158,22 +148,18 @@ def go_forward_any(speed):
 # =======================================================================
 
 def go_backward_any(speed):
+
     leftmotor(backward0)
-    #leftmotor(backward1)
-    # GPIO.output(MotorLeft_A,GPIO.HIGH)
-    # GPIO.output(MotorLeft_B,GPIO.LOW)
+    leftmotor(backward1)
     GPIO.output(MotorLeft_PWM, GPIO.HIGH)
 
-    # set the right motor to go forward
     rightmotor(backward0)
-    #rightmotor(backward1)
-    # GPIO.output(MotorRight_A,GPIO.LOW)
-    # GPIO.output(MotorRight_B,GPIO.HIGH)
+    rightmotor(backward1)
     GPIO.output(MotorRight_PWM, GPIO.HIGH)
-    # set the speed of the left motor to go forward
+
     LeftPwm.ChangeDutyCycle(speed)
-    # set the speed of the right motor to go forward
     RightPwm.ChangeDutyCycle(speed)
+
 
 # student assignment (5)
 
@@ -183,24 +169,18 @@ def go_backward_any(speed):
 # =======================================================================
 
 def go_forward(speed, running_time):
+
     leftmotor(forward0)
-    #leftmotor(forward1)
-    # GPIO.output(MotorLeft_A,GPIO.HIGH)
-    # GPIO.output(MotorLeft_B,GPIO.LOW)
     GPIO.output(MotorLeft_PWM, GPIO.HIGH)
 
-    # set the right motor to go forward
-    rightmotor(forward0)
-    #rightmotor(forward1)
-    # GPIO.output(MotorRight_A,GPIO.LOW)
-    # GPIO.output(MotorRight_B,GPIO.HIGH)
+    rightmotor(forward1)
     GPIO.output(MotorRight_PWM, GPIO.HIGH)
-    # set the speed of the left motor to go forward
+
     LeftPwm.ChangeDutyCycle(speed)
-    # set the speed of the right motor to go forward
-    RightPwm.ChangeDutyCycle(speed)
-    # set the running time of the left motor to go forward
+    RightPwm.ChangeDutyCycle(speed*0.5)
+
     sleep(running_time)
+
 
 # student assignment (6)
 
@@ -211,24 +191,20 @@ def go_forward(speed, running_time):
 # =======================================================================
 
 def go_backward(speed, running_time):
+
     leftmotor(backward0)
-    #leftmotor(backward1)
-    # GPIO.output(MotorLeft_A,GPIO.HIGH)
-    # GPIO.output(MotorLeft_B,GPIO.LOW)
+    leftmotor(backward1)
     GPIO.output(MotorLeft_PWM, GPIO.HIGH)
 
-    # set the right motor to go forward
     rightmotor(backward0)
-    #rightmotor(backward1)
-    # GPIO.output(MotorRight_A,GPIO.LOW)
-    # GPIO.output(MotorRight_B,GPIO.HIGH)
+    rightmotor(backward1)
     GPIO.output(MotorRight_PWM, GPIO.HIGH)
-    # set the speed of the left motor to go forward
+
     LeftPwm.ChangeDutyCycle(speed)
-    # set the speed of the right motor to go forward
     RightPwm.ChangeDutyCycle(speed)
-    # set the running time of the left motor to go forward
+
     sleep(running_time)
+
 
 # student assignment (7)
 
@@ -258,3 +234,11 @@ def pwm_low():
     LeftPwm.ChangeDutyCycle(0)
     RightPwm.ChangeDutyCycle(0)
     GPIO.cleanup()
+
+
+if __name__=='__main__':
+    try:	     
+	go_forward(0.1,0.1)
+	print('1')
+    except KeyboardInturrupt:
+	pwm_low()
