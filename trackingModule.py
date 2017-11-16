@@ -102,5 +102,4 @@ def signal():
 	C = GPIO.input(centerled)
 	D = GPIO.input(rightlessled)
 	E = GPIO.input(rightmostled)
-        print(A,B,C,D,E)
         return A,B,C,D,E
