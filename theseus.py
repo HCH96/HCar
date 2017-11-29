@@ -21,7 +21,7 @@ GPIO.setup(centerled, GPIO.IN)
 GPIO.setup(rightlessled, GPIO.IN)
 GPIO.setup(rightmostled, GPIO.IN)
 
-
+metaforward = ((1,1,0,1,1), (1,0,0,1,1), (1,1,0,0,1), (1,0,1,1,1), (1,1,1,0,1))
 def signal():
     A = GPIO.input(leftmostled)
     B = GPIO.input(leftlessled)
@@ -73,6 +73,6 @@ def mazer(speed, time):
 
 if __name__ == "__main__":
     while True:
-        go_forward(30, 0.3)
-        if signal()[0] and signal()[-1]:
+        go_forward(20, 0.3)
+        if signal() not in metaforward:
            mazer(30, 0.4)
