@@ -52,6 +52,7 @@ def mazer(speed, time):
             LeftPointTurn(speed, time)
         elif signalbone()[1] == forward:
             go_forward(30, 0.5)
+
     elif signalbone()[0] == stop:
         if signalbone()[1] == stop:
             pwm_low()
@@ -59,11 +60,13 @@ def mazer(speed, time):
             go_forward(30, 0.5)
         elif signalbone()[1] == void:
             rightPointTurn(speed, time)
+
     elif signalbone()[0] == forward:
         if signalbone()[1] == forward:
             go_forward(30, 0.5)
         else:
             LeftPointTurn(50, 0.7)
+
     elif signalbone()[0] == right:
         rightPointTurn(speed, time)
 
