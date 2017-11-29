@@ -73,5 +73,6 @@ def mazer(speed, time):
 
 if __name__ == "__main__":
     while True:
+        go_forward(30, 0.3)
         if signal()[0] and signal()[-1]:
            mazer(30, 0.4)
