@@ -97,9 +97,9 @@ GPIO.setup(rightmostled, GPIO.IN)
 
 #
 def signal():
-    A = GPIO.input(leftmostled)
-    B = GPIO.input(leftlessled)
-    C = GPIO.input(centerled)
-    D = GPIO.input(rightlessled)
-    E = GPIO.input(rightmostled)
-    return A,B,C,D,E
+    A = str(GPIO.input(leftmostled))
+    B = str(GPIO.input(leftlessled))
+    C = str(GPIO.input(centerled))
+    D = str(GPIO.input(rightlessled))
+    E = str(GPIO.input(rightmostled))
+    return int("0b" + A + B + C + D + E)
