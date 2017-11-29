@@ -77,7 +77,7 @@ def mazer(speed, time):
 if __name__ == "__main__":
     try:
         while True:
-            go_forward(1, 0.01)
+            go_forward(10, 0.1)
             if signal() not in metaforward:
                mazer(30, 0.4)
     except KeyboardInterrupt:
