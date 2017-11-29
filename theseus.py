@@ -59,7 +59,7 @@ def mazer(speed, time):
         elif signalbone()[1] == forward:
             go_forward(30, 0.5)
         elif signalbone()[1] == void:
-            rightPointTurn(speed, time)
+            RightPointTurn(speed, time)
 
     elif signalbone()[0] == forward:
         if signalbone()[1] == forward:
@@ -68,13 +68,16 @@ def mazer(speed, time):
             LeftPointTurn(50, 0.7)
 
     elif signalbone()[0] == right:
-        rightPointTurn(speed, time)
+        RightPointTurn(speed, time)
+
+    elif signalbone()[0] == void:
+        LeftPointTurn(30, 0.5)
 
 
 if __name__ == "__main__":
     try:
         while True:
-            go_forward(20, 0.01)
+            go_forward(1, 0.01)
             if signal() not in metaforward:
                mazer(30, 0.4)
     except KeyboardInterrupt:
