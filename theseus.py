@@ -73,6 +73,6 @@ def mazer(speed, time):
 
 if __name__ == "__main__":
     while True:
-        go_forward(20, 0.3)
+        go_forward(20)
         if signal() not in metaforward:
            mazer(30, 0.4)
