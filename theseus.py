@@ -57,6 +57,8 @@ def mazer(speed, time):
             pwm_low()
         elif signalbone()[1] == forward:
             go_forward(30, 0.5)
+        elif signalbone()[1] == void:
+            rightPointTurn(speed, time)
     elif signalbone()[0] == forward:
         if signalbone()[1] == forward:
             go_forward(30, 0.5)
