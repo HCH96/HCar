@@ -177,7 +177,7 @@ def go_forward(speed, running_time):
     GPIO.output(MotorRight_PWM, GPIO.HIGH)
 
     LeftPwm.ChangeDutyCycle(speed)
-    RightPwm.ChangeDutyCycle(speed*0.5)
+    RightPwm.ChangeDutyCycle(speed)
 
     sleep(running_time)
 

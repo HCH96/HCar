@@ -21,7 +21,9 @@ GPIO.setup(centerled, GPIO.IN)
 GPIO.setup(rightlessled, GPIO.IN)
 GPIO.setup(rightmostled, GPIO.IN)
 
-metaforward = ((1,1,0,1,1), (1,0,0,1,1), (1,1,0,0,1), (1,0,1,1,1), (1,1,1,0,1))
+metaforward = ((1, 1, 0, 1, 1), (1, 0, 0, 1, 1), (1, 1, 0, 0, 1), (1, 0, 1, 1, 1), (1, 1, 1, 0, 1))
+
+
 def signal():
     A = GPIO.input(leftmostled)
     B = GPIO.input(leftlessled)
@@ -39,7 +41,6 @@ def signalbone():
     return metasignal
 
 
-
 def mazer(speed, time):
     right = (1, 1, 0, 0, 0)
     left = (0, 0, 0, 1, 1)
@@ -49,7 +50,7 @@ def mazer(speed, time):
 
     if signalbone()[0] == left:
         if signalbone()[1] == void:
-            LeftPointTurn(speed, time)
+            leftPointTurn(speed, time)
         elif signalbone()[1] == forward:
             go_forward(30, 0.5)
 
@@ -59,19 +60,19 @@ def mazer(speed, time):
         elif signalbone()[1] == forward:
             go_forward(30, 0.5)
         elif signalbone()[1] == void:
-            RightPointTurn(speed, time)
+            rightPointTurn(speed, time)
 
     elif signalbone()[0] == forward:
         if signalbone()[1] == forward:
             go_forward(30, 0.5)
         else:
-            LeftPointTurn(50, 0.7)
+            leftPointTurn(50, 0.7)
 
     elif signalbone()[0] == right:
-        RightPointTurn(speed, time)
+        rightPointTurn(speed, time)
 
     elif signalbone()[0] == void:
-        LeftPointTurn(30, 0.5)
+        leftPointTurn(30, 0.5)
 
 
 if __name__ == "__main__":
@@ -79,6 +80,6 @@ if __name__ == "__main__":
         while True:
             go_forward(10, 0.1)
             if signal() not in metaforward:
-               mazer(30, 0.4)
+                mazer(30, 0.4)
     except KeyboardInterrupt:
         pwm_low()
