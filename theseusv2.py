@@ -20,7 +20,7 @@ GPIO.setup(centerled, GPIO.IN)
 GPIO.setup(rightlessled, GPIO.IN)
 GPIO.setup(rightmostled, GPIO.IN)
 
-# variable for signal()
+# variable to interpret signal
 F = (1, 1, 0, 1, 1)  # forward
 L = (0, 0, 0, 1, 1)  # left
 R = (1, 1, 0, 0, 0)  # right
@@ -50,11 +50,6 @@ def trackmode(signal):
             rightSwingTurnobs(30, 0.1)
             stop()
             sleep(0.5)
-
-    #     while signal != V:
-    #         rightSwingTurnobs(30, 0.1)
-    #         stop()
-    #         sleep(0.5)
 
 
 def mazemode(history):
