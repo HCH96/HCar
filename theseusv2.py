@@ -46,7 +46,7 @@ def trackmode(signal):
     elif signal == (1, 1, 0, 0, 1) or signal == (1, 1, 1, 0, 1):
         rightSwingTurnobs(30, 0.1)
     else:
-        while infra_module() != V:
+        while 0 in infra_module():
             rightSwingTurnobs(30, 0.1)
             stop()
             sleep(0.5)
