@@ -40,7 +40,7 @@ def infra_module():
 def trackmode(signal):
     stop()
     if signal == F:
-        go_forward(30, 0.1)
+        go_forward(20, 0.1)
     elif signal == (1, 0, 0, 1, 1) or signal == (1, 0, 1, 1, 1):
         leftSwingTurnobs(30, 0.1)
     elif signal == (1, 1, 0, 0, 1) or signal == (1, 1, 1, 0, 1):
@@ -53,7 +53,7 @@ def trackmode(signal):
 
 
 def mazemode(history):
-    go_forward(30, 0.2)
+    go_forward(20, 0.2)
     stop()
     signal = infra_module()
     if signal == F:
@@ -76,7 +76,7 @@ if __name__ == "__main__":
     try:
         while True:
             beep = infra_module()
-            if not (beep[0] or beep[-1]):
+            if not beep[0] and beep[-1]:
                 mazemode(beep)
             else:
                 trackmode(beep)
