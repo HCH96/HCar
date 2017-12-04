@@ -66,7 +66,7 @@ def mazemode(history):
             while infra_module() != V:
                 rightSwingTurnobs(30, 0.1)
         elif history[0] and history[-1]:
-            while infra_module() != V:
+            while 0 not in infra_module():
                 rightSwingTurnobs(30, 0.1)
                 stop()
                 sleep(0.5)
