@@ -52,7 +52,7 @@ def trackmode(signal):
             stop()
             sleep(0.5)
 
-
+#while문을 들어가서 signal가 (1,1,1,1,1)이 되어도 beep값이 변하질 않아 while문을 빠져나오질 못함.
 def mazemode(history):
     while (beep[0] == 0 or  beep[-1] == 0):
         print("in mazemode")
