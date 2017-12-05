@@ -12,8 +12,8 @@ GPIO.setmode(GPIO.BOARD)
 leftmostled = 16
 leftlessled = 18
 centerled = 22
-rightlessled = 32
-rightmostled = 40
+rightlessled = 40
+rightmostled = 32
 GPIO.setup(leftmostled, GPIO.IN)
 GPIO.setup(leftlessled, GPIO.IN)
 GPIO.setup(centerled, GPIO.IN)
@@ -39,6 +39,7 @@ def infra_module():
 
 def trackmode(signal):
     stop()
+    print(signal)
     if signal == F:
         go_forward(20, 0.1)
     elif signal == (1, 0, 0, 1, 1) or signal == (1, 0, 1, 1, 1):
