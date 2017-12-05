@@ -39,7 +39,6 @@ def infra_module():
 
 def trackmode(signal):
     stop()
-    print(signal)
     if signal == F:
         go_forward(20, 0.1)
     elif signal == (1, 0, 0, 1, 1) or signal == (1, 0, 1, 1, 1):
@@ -47,49 +46,41 @@ def trackmode(signal):
     elif signal == (1, 1, 0, 0, 1) or signal == (1, 1, 1, 0, 1):
         rightSwingTurnobs(30, 0.1)
     else:
-        while 0 in infra_module():
+        while not 0 in infra_module():
+            print(signal)
             rightSwingTurnobs(30, 0.1)
             stop()
             sleep(0.5)
 
 
 def mazemode(history):
-    while beep[0] and beep[-1]:
-        stop()
+    while (beep[0] == 0 or  beep[-1] == 0):
+        print("in mazemode")
+        go_forward(20,0.1)
         signal = infra_module()
-        if signal == F:
-            if history[-1] == 0:
-                rightPointTurn(30,0.1)
-            else:
-                trackmode()
-        elif signal == V:
-            if not history[-1]:
-                while infra_module() != V:
-                    rightSwingTurnobs(30, 0.1)
-            else:
-                while infra_module() != V:
-                    leftSwingTurnobs(30, 0.1)
+        stop()
+    if signal == F or signal == (1, 0, 0, 1, 1) or signal(1, 1, 0, 0, 1):
+        if history[-1] == 0:
+            rightPointTurn(30,0.1)
+        else:
+            trackmode()
 
-
-            # if history[0]:
-            #     while infra_module() != V:
-            #         leftSwingTurnobs(30, 0.1)
-            # elif history[-1]:
-            #     while infra_module() != V:
-            #         rightSwingTurnobs(30, 0.1)
-            # elif history[0] and history[-1]:
-            #     while 0 not in infra_module():
-            #         rightSwingTurnobs(30, 0.1)
-            #         stop()
-            #         sleep(0.5)
-
-#beep=(a,b,c,d,e) a and e 둘중 하나라도 0이면 True
+    elif signal == V:
+        if history[-1] == 0:
+            while infra_module() != V:
+                rightSwingTurnobs(30, 0.1)
+        else:
+            while infra_module() != V:
+                leftSwingTurnobs(30, 0.1)
+    else:
+            trackmode(infra_module())
 
 if __name__ == "__main__":
     try:
         while True:
             beep = infra_module()
-            if not beep[0] and beep[-1]:
+            print("ok")
+            if (beep[0] == 0 or beep[-1] == 0):
                 mazemode(beep)
             else:
                 trackmode(beep)
